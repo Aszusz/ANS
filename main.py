@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 alphabet = {
     'A': 0.1,
     'B': 0.3,
@@ -25,11 +27,12 @@ def generate_spread_fast():
     mask = table_size - 1
     position = 0
     spread_table = [None] * table_size
-    for symbol, probability in alphabet.items():
-        for i in range(0, symbol_appearances[symbol]):
+    for symbol, appearances in symbol_appearances.items():
+        for i in range(0, appearances):
             spread_table[position] = symbol
             position = (position + step) & mask
     return spread_table
 
 
-print(generate_spread_fast())
+if __name__ == '__main__':
+    print(generate_spread_fast())
